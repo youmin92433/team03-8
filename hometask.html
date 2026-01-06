@@ -1,0 +1,145 @@
+<!-- <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>나이 확인 실습</title>
+    <style>
+        /* 기본 스타일: 빨간색 */
+        #age-message {
+            color: red;
+            font-weight: bold;
+        }
+        /* 성공 시 스타일: 초록색 */
+        .success {
+            color: green !important;
+        }
+        /* 에러 시 스타일 (명시적) */
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form name="checkForm">
+        <div>
+            <label>나이를 입력하세요:</label>
+            <input type="number" name="userAge" placeholder="예: 25">
+        </div>
+        <p id="age-message"></p>
+        <button type="button" id="check-btn">확인</button>
+    </form>
+
+    <script>
+        const userAge = checkForm.userAge;
+        const userAgeMessage = document.getElementById("age-message");
+        
+        const button = document.querySelector("button[type=button]");
+        button.addEventListener("click", (e) => {
+            if(!userAge.value) {
+                userAgeMessage.textContent = "나이를 입력해주세요";
+                userAgeMessage.classList.remove("success");
+            }else {
+                userAgeMessage.textContent = "확인이 완료됐습니다."
+                userAgeMessage.classList.add("success");
+            }
+        }) -->
+        
+        <!-- // 버튼에 클릭 이벤트를 연결하고 if-else 문으로 로직을 완성하세요.
+        // 사용자가 '나이' 입력칸에 값을 입력하지 않고 '확인' 버튼을 누르면, 
+        // #age-message 요소에 **"나이를 입력해주세요."**라고 출력하고
+        //  글자색을 빨간색(.error 클래스)으로 표시하세요.
+
+        // 사용자가 나이를 입력(아무 값이나 입력)하고 버튼을 누르면, 
+        // #age-message 요소에 **"확인이 완료되었습니다!"**라고 출력하고 
+        // 글자색을 초록색(.success 클래스)으로 표시하세요.
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>포커스 이벤트 실습</title>
+    <style>
+        input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            /* 기본 테두리 강조 제거 */
+            outline: none; 
+        }
+    </style>
+</head>
+<body>
+    <form name="loginForm">
+        <input type="text" name="userId" placeholder="아이디를 입력하세요">
+        <input type="password" name="userPw" placeholder="비밀번호를 입력하세요">
+    </form>
+
+    <script>
+        const inputs = document.querySelectorAll("form input");
+        // 1. 'focus' 이벤트 시 e.target.style.backgroundColor를 "yellow"로 변경
+        inputs.forEach((input) =>{
+            input.addEventListener("focus", (e) => {
+                e.target.style.backgroundColor = "yellow";
+            });
+        // 2. 'blur' 이벤트 시 e.target.style.backgroundColor를 "white"로 변경
+            input.addEventListener("blur", (e) => {
+                e.target.style.backgroundColor = "white";
+            });
+
+        });
+    </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 목록 실습</title>
+    <style>
+        input {
+            outline: none;
+            padding: 8px;
+        }
+        li {
+            cursor: pointer;
+            padding: 5px;
+        }
+        li:hover {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h3>오늘의 할 일</h3>
+    <input type="text" name="todoInput" placeholder="할 일을 입력하세요" autocomplete="off">
+    <ul id="todo-list"></ul>
+
+    <script>
+        const input = document.querySelector("input[name=todoInput]");
+        const ul = document.getElementById("todo-list");
+
+        input.addEventListener("keyup", (e) => {
+            if (e.keyCode === 13) {
+                if(input.value){
+                    let text = `<li>${input.value}</li>`;
+                    ul.innerHTML += text;
+                }
+                input.value = "";
+                input.style.backgroundColor = "white";
+                }else {
+                    input.style.backgroundColor = "pink";
+                }
+        });
+        ul.addEventListener("click", (e) => {
+            if(e.target.tagName.toLowerCase() === "li"){
+                e.target.remove();
+            }
+        });
+    </script>
+</body>
+</html> -->
