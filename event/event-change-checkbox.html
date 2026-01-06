@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label><input type="checkbox" id="check-all"> 전체 선택</label>
+    <hr>
+    <label><input type="checkbox" class="item" value="사과"> 사과</label>
+    <label><input type="checkbox" class="item" value="바나나"> 바나나</label>
+    <label><input type="checkbox" class="item" value="오렌지"> 오렌지</label>
+    <label><input type="checkbox" class="item" value="포도"> 포도</label>
+    <p id="selected">선택된 항목: </p>
+</body>
+<script>
+    NodeList.prototype.filter = Array.prototype.filter;
+    NodeList.prototype.map = Array.prototype.map;
+
+    const checkAll = document.getElementById("check-all");
+    const items = document.querySelectorAll(".item");
+    const selected = document.getElementById("selected");
+
+    const itemValues = items.map((item) => item.value);
+
+    items.forEach((item) => {
+        item.addEventListener("change", (e) => {
+            if(e.target.checked) {
+                const span = document.createElement("span");
+                span.textContent = e.target.value + " ";
+                selected.appendChild(span);
+            } else {
+                const spans = document.querySelectorAll("#selected span");
+                spans.filter((span) => span.textContent.includes(e.target.value))[0].remove();
+            }
+        })
+    })
+
+    checkAll.addEventListener("change", (e) => {
+        items.forEach((item) => {
+            if(e.target.checked ) {
+                if (!item.checked) {
+                    item.checked = true;
+                    const span = document.createElement("span");
+                    span.textContent = item.value + " ";
+                    selected.appendChild(span);
+                }
+            } else {
+                const spans = document.querySelectorAll("#selected span");
+                item.checked = false;
+                spans.forEach((span) => {
+                    span.remove();
+                })
+            }
+        })
+    })
+
+
+</script>
+</html>
