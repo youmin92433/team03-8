@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 목록 실습</title>
+    <style>
+        input {
+            outline: none;
+            padding: 8px;
+        }
+        li {
+            cursor: pointer;
+            padding: 5px;
+        }
+        li:hover {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h3>오늘의 할 일</h3>
+    <input type="text" name="todoInput" placeholder="할 일을 입력하세요" autocomplete="off">
+    <ul id="todo-list"></ul>
+
+    <script>
+        // 여기에 코드를 작성하세요.
+        // 1. 필요한 요소 선택 (input 태그, ul 태그)
+        const input = document.querySelector("input[name=todoInput]");
+        const ul = document.getElementById("todo-list");
+
+        // 2. input에 'keyup' 이벤트 리스너 추가
+        input.addEventListener("keyup", (e) => {
+            if(e.keyCode === 13) {
+                if(!input.value) return;
+
+                const li = document.createElement("li");
+                li.textContent = input.value;
+                ul.appendChild(li);
+
+                input.value = "";
+            }
+            
+        })
+
+        // 3. ul에 'click' 이벤트 리스너 추가 (이벤트 위임 활용)
+        ul.addEventListener("click", (e) => {
+            if(e.target !== ul) e.target.remove();
+        })
+    </script>
+</body>
+</html>
